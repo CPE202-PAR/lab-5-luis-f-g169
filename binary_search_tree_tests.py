@@ -82,5 +82,12 @@ class TestLab4(unittest.TestCase):
             bst.insert(keys[i])            
         self.assertEqual(bst.tree_height(), 3)
 
+    def test_17_test_min(self) -> None:
+        bst = BinarySearchTree()
+        keys = [99, -4, 167, 139, 55, -89, 13, 78, 178, 174]
+        for i in range(len(keys)):
+            bst.insert(keys[i])
+        self.assertEqual(bst.find_min(), (-89, None))
+
 if __name__ == '__main__': 
     unittest.main()

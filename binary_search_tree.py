@@ -24,15 +24,12 @@ class BinarySearchTree:
 
     # returns True if key is in a node of the tree, else False
     def search(self, key: Any) -> bool:
-        if self.is_empty():
+        temp: Node = self.root
+        if temp is None:
             return False 
         else:
-            if key == self.root.key:
-                return True
-            if key > self.root.key:
-                return self.search_helper(self.root.right, key)
-            if key < self.root.key:
-                return self.search_helper(self.root.left, key)
+            return self.search_helper(temp, key)
+    
     def search_helper(self, node: Node, key: Any) -> bool:
             if node is None:
                 return False
@@ -75,7 +72,7 @@ class BinarySearchTree:
     def find_min(self) -> MaybeTuple:
         if self.is_empty():
             return None
-        temp = self.root
+        temp: Node = self.root
         while temp.left is not None:
             temp = temp.left
         return temp.key, temp.data 
@@ -85,7 +82,7 @@ class BinarySearchTree:
     def find_max(self) -> MaybeTuple:
         if self.is_empty():
             return None
-        temp = self.root
+        temp: Node = self.root
         while temp.right is not None:
             temp = temp.right
         return temp.key, temp.data 
