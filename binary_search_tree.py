@@ -53,9 +53,7 @@ class BinarySearchTree:
             return self.insert_helper(self.root, temp, key, data)
     
     def insert_helper(self,node:Node, temp:Node, key:Any, data: Any) -> None:
-        if node is None:
-            node = temp
-        elif key == node.key:
+        if key == node.key:
             node.data = data 
         elif key > node.key:
             if node.right is None:
@@ -92,7 +90,8 @@ class BinarySearchTree:
     def tree_height(self) -> MaybeInt:
         if self.is_empty():
             return None
-        return self.tree_height_helper(self.root)
+        temp: Node = self.root
+        return self.tree_height_helper(temp)
             
     def tree_height_helper(self, node: Node) -> MaybeInt:
         if node is None:
@@ -106,7 +105,8 @@ class BinarySearchTree:
     # return Python list of BST keys representing inorder traversal of BST
     def inorder_list(self) -> List:
         list = []
-        self.inorder_list_helper(self.root, list)
+        temp: Node = self.root
+        self.inorder_list_helper(temp, list)
         return list 
     
     def inorder_list_helper(self, node: Node, list: List) -> List:
@@ -120,7 +120,8 @@ class BinarySearchTree:
     # return Python list of BST keys representing preorder traversal of BST
     def preorder_list(self) -> List:
         list = []
-        self.preorder_list_helper(self.root, list)
+        temp: Node = self.root
+        self.preorder_list_helper(temp, list)
         return list
         
     def preorder_list_helper(self, node: Node, list: List) -> List:
